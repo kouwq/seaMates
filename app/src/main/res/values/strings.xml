@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">seaMates</string>
+    <string name="log_btn">Sign in</string>
+    <string name="reg_btn">Sign up</string>
+    <string name="phone_hint1">Please input your phone number</string>
+    <string name="pwd_hint1">Please input your password</string>
+</resources>
