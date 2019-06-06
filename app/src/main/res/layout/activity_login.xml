@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/hello6"
@@ -8,53 +10,163 @@
     tools:context=".LoginActivity">
 
     <TextView
-        android:id="@+id/title_log"
+        android:id="@+id/log_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
-        android:gravity="center"
         android:text="@string/app_name"
         android:textColor="@color/green"
-        android:textSize="50sp" />
+        android:textSize="40sp" />
 
-    <EditText
-        android:id="@+id/log_u"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/pwd_u"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp"
-        android:ems="10"
-        android:inputType="textPassword" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
 
-    <Button
-        android:id="@+id/log_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/log_btn" />
+            <ImageView
+                android:id="@+id/iv_userIconName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="30dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                app:srcCompat="@mipmap/log" />
 
-    <Button
-        android:id="@+id/reg_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="0dp"
-        android:text="@string/reg_btn" />
+            <View
+                android:id="@+id/viewName"
+                android:layout_width="2dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_userIconName"
+                android:background="@color/black" />
+
+            <EditText
+                android:id="@+id/et_log_u"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/viewName"
+                android:autofillHints="135"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="none"
+                android:hint="@string/log_u"
+                android:textCursorDrawable="@null" />
+
+            <ImageView
+                android:id="@+id/iv_unaClear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@mipmap/clear"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp">
+
+            <ImageView
+                android:id="@+id/iv_userIconPwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="30dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                app:srcCompat="@mipmap/log" />
+
+            <View
+                android:id="@+id/viewPwd"
+                android:layout_width="2dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_userIconPwd"
+                android:background="@color/black" />
+
+
+            <EditText
+                android:id="@+id/et_pwd_u"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/viewPwd"
+                android:autofillHints="123"
+                android:background="@null"
+                android:ems="10"
+                android:hint="@string/log_p"
+                android:inputType="textPassword"
+                android:textCursorDrawable="@null" />
+
+            <ImageView
+                android:id="@+id/iv_pwdClear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@mipmap/clear"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
+        <CheckBox
+            android:id="@+id/cb_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:checked="false"
+            android:duplicateParentState="false"
+            android:text="记住密码"
+            android:textColor="#666666"
+            android:textSize="15sp"
+            app:buttonTint="@color/black" />
+
+        <Button
+            android:id="@+id/log_btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/log_btn1"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/log_btn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/log_btn2"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </LinearLayout>

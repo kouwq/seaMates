@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">聚贤庄</string>
-    <string name="log_btn">登录</string>
-    <string name="reg_btn">注册</string>
-    <string name="phone_hint1">请输入手机号</string>
-    <string name="pwd_hint1">请输入密码</string>
+    <string name="log_btn1">登录</string>
+    <string name="log_btn2">注册</string>
+    <string name="reg_phone_hint">手机号</string>
+    <string name="reg_pwd_hint">密码</string>
+    <string name="log_u">用户名</string>
+    <string name="log_p">密码</string>
+    <string name="reg_wel">欢迎</string>
+    <string name="reg_email_hint">邮箱地址</string>
+    <string name="reg_email">邮箱</string>
+    <string name="reg_address">家庭地址</string>
+    <string name="hello_blank_fragment">您好</string>
+    <string name="menu_label">设置</string>
 </resources>
