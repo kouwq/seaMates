@@ -4,14 +4,13 @@
     <string name="log_btn2">Sign up</string>
     <string name="reg_phone_hint">Phone number</string>
     <string name="reg_pwd_hint">Password</string>
-    <string name="log_u">Username</string>
+    <string name="log_u">Account</string>
     <string name="log_p">Password</string>
-    <string name="reg_wel">Welcome!</string>
+    <string name="reg_wel">Welcome to register!</string>
     <string name="reg_email_hint">582546@qq.com</string>
     <string name="reg_email">Email</string>
     <string name="reg_address">Address</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_label">settings</string>
 </resources>

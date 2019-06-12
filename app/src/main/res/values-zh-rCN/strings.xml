@@ -5,9 +5,9 @@
     <string name="log_btn2">注册</string>
     <string name="reg_phone_hint">手机号</string>
     <string name="reg_pwd_hint">密码</string>
-    <string name="log_u">用户名</string>
+    <string name="log_u">账号</string>
     <string name="log_p">密码</string>
-    <string name="reg_wel">欢迎</string>
+    <string name="reg_wel">欢迎注册</string>
     <string name="reg_email_hint">邮箱地址</string>
     <string name="reg_email">邮箱</string>
     <string name="reg_address">家庭地址</string>
