@@ -11,19 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_wel"
+            android:id="@+id/reg_tv_wel"
             style="@style/AppTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:padding="20dp"
-            android:text="@string/reg_wel"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:padding="10dp"
+            android:text="@string/welcome"
             android:textColor="@color/black"
             android:textSize="20sp" />
     </LinearLayout>
@@ -32,113 +32,158 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:orientation="vertical">
 
         <LinearLayout style="@style/FormMainLayoutStyle">
 
             <TextView
-                android:id="@+id/tv_n"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
-                android:padding="5dp"
-                android:text="@string/log_u" />
+                android:id="@+id/reg_tv_account"
+                style="@style/LeftTextView"
+                android:text="@string/account" />
 
             <EditText
-                android:id="@+id/reg_account"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:ems="10"
-                android:hint="@string/reg_phone_hint"
-                android:inputType="none"
-                android:padding="5dp" />
+                android:id="@+id/reg_et_account"
+                style="@style/RightEditText"
+                android:hint="@string/account_hint"
+                android:inputType="none" />
         </LinearLayout>
 
         <LinearLayout style="@style/FormMainLayoutStyle">
 
             <TextView
-                android:id="@+id/tv_pwd"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
-                android:padding="5dp"
-                android:text="@string/log_p" />
+                android:id="@+id/reg_tv_name"
+                style="@style/LeftTextView"
+                android:text="@string/username" />
 
             <EditText
-                android:id="@+id/reg_pwd"
+                android:id="@+id/reg_et_name"
+                style="@style/RightEditText"
+                android:hint="@string/username_hint"
+                android:inputType="textPostalAddress" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/FormMainLayoutStyle">
+
+            <TextView
+                android:id="@+id/reg_tv_sex"
+                style="@style/LeftTextView"
+                android:text="@string/sex" />
+
+            <RadioGroup
+                android:id="@+id/reg_rg_sex"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@null"
-                android:ems="12"
-                android:hint="@string/reg_pwd_hint"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/reg_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:text="@string/reg_rad_male" />
+
+                <RadioButton
+                    android:id="@+id/reg_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:text="@string/reg_rad_fem" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout style="@style/FormMainLayoutStyle">
+
+            <TextView
+                android:id="@+id/reg_tv_pwd"
+                style="@style/LeftTextView"
+                android:text="@string/pwd" />
+
+            <EditText
+                android:id="@+id/reg_et_pwd"
+                style="@style/RightEditText"
+                android:hint="@string/pwd_hint"
                 android:inputType="textPassword" />
         </LinearLayout>
 
-        <LinearLayout style="@style/FormMainLayoutStyle">
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:padding="5dp"
-                android:text="username" />
-
-            <EditText
-                android:id="@+id/reg_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:ems="10"
-                android:hint="username"
-                android:inputType="textPostalAddress" />
-        </LinearLayout>
 
         <LinearLayout style="@style/FormMainLayoutStyle">
 
             <TextView
-                android:id="@+id/tv_email"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:padding="5dp"
-                android:text="@string/reg_email" />
+                android:id="@+id/reg_tv_phone"
+                style="@style/LeftTextView"
+                android:text="@string/phone" />
 
             <EditText
-                android:id="@+id/reg_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:ems="10"
-                android:hint="@string/reg_email_hint"
-                android:inputType="textEmailAddress" />
+                android:id="@+id/reg_et_phone"
+                style="@style/RightEditText"
+                android:hint="@string/phone_hint"
+                android:inputType="text" />
 
         </LinearLayout>
 
         <LinearLayout style="@style/FormMainLayoutStyle">
 
             <TextView
-                android:id="@+id/tv_address"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:padding="5dp"
-                android:text="@string/reg_address" />
+                android:id="@+id/reg_tv_grade"
+                style="@style/LeftTextView"
+                android:text="@string/grade" />
 
             <EditText
-                android:id="@+id/reg_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:ems="10"
-                android:hint="location"
-                android:inputType="textPostalAddress" />
+                android:id="@+id/reg_et_grade"
+                style="@style/RightEditText"
+                android:hint="@string/grade_hint"
+                android:inputType="text" />
         </LinearLayout>
 
+        <LinearLayout style="@style/FormMainLayoutStyle">
 
+            <TextView
+                android:id="@+id/reg_tv_major"
+                style="@style/LeftTextView"
+                android:text="@string/major" />
+
+            <EditText
+                android:id="@+id/reg_et_major"
+                style="@style/RightEditText"
+                android:hint="@string/major_hint"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/FormMainLayoutStyle">
+
+            <TextView
+                android:id="@+id/reg_tv_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/idc" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            >
+
+            <EditText
+                android:id="@+id/reg_et_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:minLines="5"
+                android:gravity="top"
+                android:ems="10"
+                android:hint="@string/idc_hint"
+                android:inputType="text" />
+        </LinearLayout>
     </LinearLayout>
 
     <FrameLayout
@@ -150,6 +195,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Submit" />
+            android:background="@null"
+            android:text="@string/submit"
+            android:textColor="@color/black" />
     </FrameLayout>
 </LinearLayout>

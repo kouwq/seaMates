@@ -46,18 +46,17 @@
                 android:layout_width="2dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:layout_toRightOf="@+id/iv_userIconName"
                 android:background="@color/black" />
 
             <EditText
                 android:id="@+id/et_log_u"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:background="@null"
                 android:ems="10"
-                android:hint="@string/log_u"
+                android:hint="@string/account"
                 android:inputType="none"
                 android:textCursorDrawable="@null" />
 
@@ -65,7 +64,7 @@
                 android:id="@+id/iv_unaClear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
                 android:src="@mipmap/clear"
                 android:visibility="invisible" />
 
@@ -85,19 +84,18 @@
                 android:layout_width="2dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:layout_toRightOf="@+id/iv_userIconPwd"
                 android:background="@color/black" />
 
 
             <EditText
                 android:id="@+id/et_pwd_u"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:background="@null"
                 android:ems="10"
-                android:hint="@string/log_p"
+                android:hint="@string/pwd"
                 android:inputType="textPassword"
                 android:textCursorDrawable="@null" />
 
@@ -105,7 +103,7 @@
                 android:id="@+id/iv_pwdClear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
                 android:src="@mipmap/clear"
                 android:visibility="invisible" />
 
@@ -122,7 +120,7 @@
                 android:checked="false"
                 android:duplicateParentState="false"
                 android:padding="5dp"
-                android:text="记住密码"
+                android:text="@string/pwd_rem"
                 android:textColor="#666666"
                 android:textSize="15sp"
                 app:buttonTint="@color/black" />
@@ -138,7 +136,7 @@
             android:layout_marginBottom="10dp"
             android:background="@null"
             android:gravity="center"
-            android:text="@string/log_btn1"
+            android:text="@string/log_in"
             android:textColor="#fff"
             android:textSize="18sp" />
 
@@ -150,7 +148,7 @@
             android:layout_marginRight="30dp"
             android:background="@null"
             android:gravity="center"
-            android:text="@string/log_btn2"
+            android:text="@string/log_up"
             android:textColor="#fff"
             android:textSize="18sp" />
     </LinearLayout>
