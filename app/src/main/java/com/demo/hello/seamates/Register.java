@@ -7,18 +7,20 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
-    private EditText account,pwd,username,email,address;
+    private EditText account,pwd,username,phone,major,info,grade;
     private Button sub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        account = findViewById(R.id.reg_account);
-        pwd = findViewById(R.id.reg_pwd);
-        username = findViewById(R.id.reg_name);
-        email = findViewById(R.id.reg_email);
-        address = findViewById(R.id.reg_address);
+        account = findViewById(R.id.reg_et_account);
+        pwd = findViewById(R.id.reg_et_pwd);
+        username = findViewById(R.id.reg_et_name);
+        phone = findViewById(R.id.reg_et_phone);
+        major = findViewById(R.id.reg_et_major);
+        grade = findViewById(R.id.reg_et_grade);
+        info = findViewById(R.id.reg_et_info);
         sub = findViewById(R.id.reg_btn);
         sub.setOnClickListener(this);
     }
@@ -28,8 +30,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         String accountText = account.getText().toString();
         String pwdText = pwd.getText().toString();
         String usernameText = username.getText().toString();
-        String emailText = email.getText().toString();
-        String addressText = address.getText().toString();
+        String phoneText = phone.getText().toString();
+        String majorText = major.getText().toString();
+        String gradeText = grade.getText().toString();
+        String infoText = info.getText().toString();
 
 
 

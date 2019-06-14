@@ -1,11 +1,16 @@
 package com.demo.hello.seamates;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +22,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText username, pwd;
     Button btn1, btn2;
     ImageView imageView1, imageView2;
+    // 创建等待框
+    private ProgressDialog dialog;
+    // 返回的数据
+    private String info;
+    // 返回主线程更新数据
+    private static Handler handler = new Handler();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +40,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         imageView1 = findViewById(R.id.iv_unaClear);
         imageView2 = findViewById(R.id.iv_pwdClear);
         //添加清除监听
-        addClearListener(username,imageView1);
-        addClearListener(pwd,imageView2);
+        addClearListener(username, imageView1);
+        addClearListener(pwd, imageView2);
 
         btn1 = findViewById(R.id.log_btn1);
         btn1.setOnClickListener(this);
@@ -41,32 +53,75 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View btn) {
         Log.i(TAG, "onClick msg...");
-        if (btn.getId() == R.id.log_btn2) {
-            Intent register = new Intent(this, Register.class);
-            startActivityForResult(register, 1);
-            Log.i(TAG, "register");
-        } else {
-            String user = username.getText().toString();
-            String pwd1 = pwd.getText().toString();
-            if (user.length() == 0) {
-                Toast.makeText(this, "账号不能为空！", Toast.LENGTH_SHORT).show();
-            } else if (pwd1.length() == 0) {
-                Toast.makeText(this, "密码不能为空！", Toast.LENGTH_SHORT).show();
-            } else if (!user.matches("^1[3|5|7|8]\\d{9}$")) {
-                Toast.makeText(this, "账号格式不对！", Toast.LENGTH_SHORT).show();
-            } else {
-                if (user.equals("13550585364") & pwd1.equals("123")) {
-                    Intent main = new Intent(this, MainActivity.class);
-                    startActivityForResult(main, 2);
-                    Toast.makeText(this, "登陆seaMates", Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "Log in");
+        switch (btn.getId()) {
+            case R.id.log_btn2:
+                Intent register = new Intent(this, Register.class);
+                startActivityForResult(register, 1);
+                Log.i(TAG, "register");
+                break;
+            case R.id.log_btn1:
+                String user = username.getText().toString();
+                String pwd1 = pwd.getText().toString();
+                if (user.length() == 0) {
+                    Toast.makeText(this, "账号不能为空！", Toast.LENGTH_SHORT).show();
+                } else if (pwd1.length() == 0) {
+                    Toast.makeText(this, "密码不能为空！", Toast.LENGTH_SHORT).show();
+                } else if (!user.matches("^1[3|5|7|8]\\d{9}$")) {
+                    Toast.makeText(this, "账号格式不对！", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "账号或密码错误！", Toast.LENGTH_SHORT).show();
-
+                    if (user.equals("13550585364") & pwd1.equals("123")) {
+                        Intent main = new Intent(this, MainActivity.class);
+                        startActivityForResult(main, 2);
+                        Toast.makeText(this, "登陆seaMates", Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "Log in");
+                    } else {
+                        Toast.makeText(this, "账号或密码错误！", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
+                // 检测网络，无法检测wifi
+//                if (!checkNetwork()) {
+//                    Toast toast = Toast.makeText(this, "网络未连接", Toast.LENGTH_SHORT);
+//                    toast.setGravity(Gravity.CENTER, 0, 0);
+//                    toast.show();
+//                    break;
+//                }
+//                // 提示框
+//                dialog = new ProgressDialog(this);
+//                dialog.setTitle("提示");
+//                dialog.setMessage("正在登陆，请稍后...");
+//                dialog.setCancelable(false);
+//                dialog.show();
+//                // 创建子线程，分别进行Get和Post传输
+//                new Thread(new MyThread()).start();
+                break;
+
         }
     }
+
+    // 子线程接收数据，主线程修改数据
+    public class MyThread implements Runnable {
+        @Override
+        public void run() {
+//            info = WebService.executeHttpGet(username.getText().toString(), pwd.getText().toString());
+            // info = WebServicePost.executeHttpPost(username.getText().toString(), password.getText().toString());
+//            handler.post(new Runnable() {
+//                @Override
+//                public void run() {
+//                    info.setText(info);
+//                    dialog.dismiss();
+//                }
+//            });
+        }
+    }
+    // 检测网络
+    private boolean checkNetwork() {
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connManager.getActiveNetworkInfo() != null) {
+            return connManager.getActiveNetworkInfo().isAvailable();
+        }
+        return false;
+    }
+
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
@@ -97,7 +152,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             }
         });
-        imageView.setOnClickListener(new View.OnClickListener(){
+        imageView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
