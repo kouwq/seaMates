@@ -89,7 +89,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     dialog.setCancelable(false);
                     dialog.show();
                     // 创建子线程，分别进行Get和Post传输
-                    new Thread(new MyThread()).start();
+                    new LoginTask().execute(user,pwd1,"android");
+//                    new Thread(new MyThread()).start();
 
                     break;
                 }
@@ -111,6 +112,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 public void run() {
                     if(info.length()>0){
                         Intent main = new Intent(LoginActivity.this, MainActivity.class);
+//                        main.putExtra("dollar_rate_key", dollarRate);
+//                        main.putExtra("euro_rate_key", euroRate);
+//                        main.putExtra("won_rate_key", wonRate);
+//
+//                        Log.i(TAG, "openConfig:dollarRate=" + dollarRate);
+//                        Log.i(TAG, "openConfig:euroRate=" + euroRate);
+//                        Log.i(TAG, "openConfig:wonRate=" + wonRate);
+
                         startActivityForResult(main, 2);
                         Toast.makeText(LoginActivity.this, "登陆seaMates", Toast.LENGTH_SHORT).show();
                         Log.i(TAG, "Log in");
@@ -132,26 +141,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         return false;
     }
-//    private class LoginTask extends AsyncTask<String, Void, String> {
-//        @Override
-//        protected String doInBackground(String... params) {
-//            for (String p : params) {
-//                Log.i(TAG, "doInBackground: " + p);
-//            }
-//            HashMap<String, String> hashMap = new HashMap<>();
-//            hashMap.put("stunum", username.getText().toString());
-//            hashMap.put("pwd", pwd.getText().toString());
-//            String url = "http://10.32.152.9:8080/mis_group/LoginServlet";
-//            info = WebService.executeHttpPost(url, hashMap);
-//            String ret = WebService.executeHttpPost(url, hashMap);
-//            return ret;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String s) {
+    private class LoginTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            for (String p : params) {
+                Log.i(TAG, "doInBackground: " + p);
+            }
+            HashMap<String, String> hashMap = new HashMap<>();
+            hashMap.put("stunum", params[0]);
+            hashMap.put("pwd", params[1]);
+            hashMap.put("url",params[2]);
+            String url = "http://10.32.132.244:8080/mis_group/LoginServlet";
+            String ret = WebService.executeHttpPost(url, hashMap);
+            return ret;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
 //            Toast.makeText(LoginActivity.this, s, Toast.LENGTH_SHORT).show();
-//        }
-//    }
+            if(s.length()>0){
+                Intent main = new Intent(LoginActivity.this, MainActivity.class);
+
+                startActivityForResult(main, 2);
+                Toast.makeText(LoginActivity.this, "登陆seaMates", Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "Log in");
+                Log.i(TAG, "run: info="+s);
+            }else{
+                Toast.makeText(LoginActivity.this, "账号或密码错误！", Toast.LENGTH_SHORT).show();
+            }
+            dialog.dismiss();
+        }
+    }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {

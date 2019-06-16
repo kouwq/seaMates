@@ -31,6 +31,7 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
         /**
          * RadioGroup部分
          */
+
         radioGroup = findViewById(R.id.bottomGroup);
         rbtHome = findViewById(R.id.radioHome);
         rbtFunc = findViewById(R.id.radioFunc);
@@ -45,12 +46,15 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
                          * setCurrentItem第二个参数控制页面切换动画
                          * true:打开/false:关闭
                          */
+                        rbtHome.setBackgroundResource(R.drawable.shape2);
                         viewPager.setCurrentItem(0, true);
                         break;
                     case R.id.radioFunc:
+                        rbtFunc.setBackgroundResource(R.drawable.shape2);
                         viewPager.setCurrentItem(1, true);
                         break;
                     case R.id.radioSetting:
+                        rbtSetting.setBackgroundResource(R.drawable.shape2);
                         viewPager.setCurrentItem(2, true);
                         break;
                 }
@@ -62,13 +66,13 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
          */
         viewPager = findViewById(R.id.viewpager);
 
-        FirstFragment weChatFragment = new FirstFragment();
-        SecondFragment contactsFragment = new SecondFragment();
-        ThirdFragment discoveryFragment = new ThirdFragment();
+        FirstFragment infoFragment = new FirstFragment();
+        SecondFragment teamFragment = new SecondFragment();
+        ThirdFragment userFragment = new ThirdFragment();
         List<Fragment> alFragment = new ArrayList<Fragment>();
-        alFragment.add(weChatFragment);
-        alFragment.add(contactsFragment);
-        alFragment.add(discoveryFragment);
+        alFragment.add(infoFragment);
+        alFragment.add(teamFragment);
+        alFragment.add(userFragment);
         //ViewPager设置适配器
         pageAdapter = new MyPageAdapter(getSupportFragmentManager(), alFragment);
         viewPager.setAdapter(pageAdapter);
