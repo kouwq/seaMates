@@ -46,15 +46,12 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
                          * setCurrentItem第二个参数控制页面切换动画
                          * true:打开/false:关闭
                          */
-                        rbtHome.setBackgroundResource(R.drawable.shape2);
                         viewPager.setCurrentItem(0, true);
                         break;
                     case R.id.radioFunc:
-                        rbtFunc.setBackgroundResource(R.drawable.shape2);
                         viewPager.setCurrentItem(1, true);
                         break;
                     case R.id.radioSetting:
-                        rbtSetting.setBackgroundResource(R.drawable.shape2);
                         viewPager.setCurrentItem(2, true);
                         break;
                 }

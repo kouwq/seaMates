@@ -22,7 +22,7 @@ import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private final String TAG = "LoginActivity";
-    EditText username, pwd;
+    EditText account, pwd;
     Button btn1, btn2;
     ImageView imageView1, imageView2;
     // 创建等待框
@@ -38,14 +38,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        username = findViewById(R.id.et_log_u);
+        account = findViewById(R.id.et_log_u);
         pwd = findViewById(R.id.et_pwd_u);
         imageView1 = findViewById(R.id.iv_unaClear);
         imageView2 = findViewById(R.id.iv_pwdClear);
         //添加清除监听
-        addClearListener(username, imageView1);
+        addClearListener(account, imageView1);
         addClearListener(pwd, imageView2);
-
+        //获取注册页面传参
+        Intent intent = getIntent();
+        String accountText=intent.getStringExtra("stunum");
+        String pwdText=intent.getStringExtra("pwd");
+        if(accountText!=null){
+            account.setText(accountText);
+            pwd.setText(pwdText);
+        }
         btn1 = findViewById(R.id.log_btn1);
         btn1.setOnClickListener(this);
         btn2 = findViewById(R.id.log_btn2);
@@ -63,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Log.i(TAG, "register");
                 break;
             case R.id.log_btn1:
-                String user = username.getText().toString();
+                String user = account.getText().toString();
                 String pwd1 = pwd.getText().toString();
                 if (user.length() == 0) {
                     Toast.makeText(this, "账号不能为空！", Toast.LENGTH_SHORT).show();
@@ -89,7 +96,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     dialog.setCancelable(false);
                     dialog.show();
                     // 创建子线程，分别进行Get和Post传输
-                    new LoginTask().execute(user,pwd1,"android");
+                    Log.i(TAG, "onClick: user="+user);
+                    new LoginTask().execute(user,pwd1);
 //                    new Thread(new MyThread()).start();
 
                     break;
@@ -102,23 +110,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         @Override
         public void run() {
             HashMap<String, String> hashMap = new HashMap<>();
-            hashMap.put("stunum", username.getText().toString());
+            hashMap.put("stunum", account.getText().toString());
             hashMap.put("pwd", pwd.getText().toString());
-            String url = "http://10.32.152.9:8080/mis_group/LoginServlet";
+            String url = "http://10.32.152.9:8080/mis_group/Login";
             info = WebService.executeHttpPost(url, hashMap);
 
             handler.post(new Runnable() {
                 @Override
                 public void run() {
                     if(info.length()>0){
+                        Log.i(TAG,"info="+info);
                         Intent main = new Intent(LoginActivity.this, MainActivity.class);
-//                        main.putExtra("dollar_rate_key", dollarRate);
-//                        main.putExtra("euro_rate_key", euroRate);
-//                        main.putExtra("won_rate_key", wonRate);
-//
-//                        Log.i(TAG, "openConfig:dollarRate=" + dollarRate);
-//                        Log.i(TAG, "openConfig:euroRate=" + euroRate);
-//                        Log.i(TAG, "openConfig:wonRate=" + wonRate);
 
                         startActivityForResult(main, 2);
                         Toast.makeText(LoginActivity.this, "登陆seaMates", Toast.LENGTH_SHORT).show();
@@ -150,22 +152,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             HashMap<String, String> hashMap = new HashMap<>();
             hashMap.put("stunum", params[0]);
             hashMap.put("pwd", params[1]);
-            hashMap.put("url",params[2]);
-            String url = "http://10.32.132.244:8080/mis_group/LoginServlet";
+            hashMap.put("url","android");
+            String url = "http://10.240.13.8:8080/mis_group/Login";
             String ret = WebService.executeHttpPost(url, hashMap);
             return ret;
         }
 
         @Override
         protected void onPostExecute(String s) {
-//            Toast.makeText(LoginActivity.this, s, Toast.LENGTH_SHORT).show();
             if(s.length()>0){
+                Log.i(TAG,"info="+s.length());
                 Intent main = new Intent(LoginActivity.this, MainActivity.class);
-
+                main.putExtra("account", account.getText().toString());
+                main.putExtra("pwd", pwd.getText().toString());
                 startActivityForResult(main, 2);
                 Toast.makeText(LoginActivity.this, "登陆seaMates", Toast.LENGTH_SHORT).show();
-                Log.i(TAG, "Log in");
-                Log.i(TAG, "run: info="+s);
+                Log.i(TAG, "info="+s);
             }else{
                 Toast.makeText(LoginActivity.this, "账号或密码错误！", Toast.LENGTH_SHORT).show();
             }

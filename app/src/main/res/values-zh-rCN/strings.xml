@@ -31,4 +31,5 @@
     <string name="username_hint">姓名</string>
     <string name="idc">自我介绍</string>
     <string name="idc_hint">介绍一下特点</string>
+    <string name="title_activity_main2">第二个页面</string>
 </resources>

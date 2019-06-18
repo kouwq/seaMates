@@ -31,4 +31,5 @@
     <string name="username_hint">name</string>
     <string name="idc">introduction</string>
     <string name="idc_hint">self-introduce</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>

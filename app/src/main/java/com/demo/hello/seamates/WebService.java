@@ -23,7 +23,7 @@ public class WebService {
             if (hashMap.size() > 0) {
                 for (HashMap.Entry<String, String> entry : hashMap.entrySet()) {
                     s += entry.getKey() + "=" + URLEncoder.encode(entry.getValue(), "utf-8") + "&";
-                    System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
+                    Log.i(TAG,"key= " + entry.getKey() + " and value= " + entry.getValue());
                 }
             }
             byte[] data = s.substring(0, s.length() - 1).getBytes();
