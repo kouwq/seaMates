@@ -23,7 +23,7 @@ import java.util.HashMap;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private final String TAG = "LoginActivity";
     EditText account, pwd;
-    Button btn1, btn2;
+    Button login_btn, register_btn;
     ImageView imageView1, imageView2;
     // 创建等待框
     private ProgressDialog dialog;
@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //获取控件
         account = findViewById(R.id.et_log_u);
         pwd = findViewById(R.id.et_pwd_u);
         imageView1 = findViewById(R.id.iv_unaClear);
@@ -53,10 +54,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             account.setText(accountText);
             pwd.setText(pwdText);
         }
-        btn1 = findViewById(R.id.log_btn1);
-        btn1.setOnClickListener(this);
-        btn2 = findViewById(R.id.log_btn2);
-        btn2.setOnClickListener(this);
+
+        login_btn = findViewById(R.id.log_btn);
+        login_btn.setOnClickListener(this);
+        register_btn = findViewById(R.id.log_btn_r);
+        register_btn.setOnClickListener(this);
     }
 
 
@@ -64,12 +66,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View btn) {
         Log.i(TAG, "onClick msg...");
         switch (btn.getId()) {
-            case R.id.log_btn2:
+            case R.id.log_btn_r:
                 Intent register = new Intent(this, Register.class);
                 startActivityForResult(register, 1);
                 Log.i(TAG, "register");
                 break;
-            case R.id.log_btn1:
+            case R.id.log_btn:
                 String user = account.getText().toString();
                 String pwd1 = pwd.getText().toString();
                 if (user.length() == 0) {
@@ -82,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //                }
                 else {
 
-                    // 检测网络，无法检测wifi
+                    // 检测网络
                     if (!checkNetwork()) {
                         Toast toast = Toast.makeText(this, "网络未连接", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -95,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     dialog.setMessage("正在登陆，请稍后...");
                     dialog.setCancelable(false);
                     dialog.show();
-                    // 创建子线程，分别进行Get和Post传输
+                    // 创建子线程
                     Log.i(TAG, "onClick: user="+user);
                     new LoginTask().execute(user,pwd1);
 //                    new Thread(new MyThread()).start();
@@ -160,7 +162,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         @Override
         protected void onPostExecute(String s) {
-            if(s.length()>0){
+            if(s.equals("0")||s.length()==0){
+                Toast.makeText(LoginActivity.this, "账号或密码错误！", Toast.LENGTH_SHORT).show();
+            }else{
                 Log.i(TAG,"info="+s.length());
                 Intent main = new Intent(LoginActivity.this, MainActivity.class);
                 main.putExtra("account", account.getText().toString());
@@ -168,8 +172,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivityForResult(main, 2);
                 Toast.makeText(LoginActivity.this, "登陆seaMates", Toast.LENGTH_SHORT).show();
                 Log.i(TAG, "info="+s);
-            }else{
-                Toast.makeText(LoginActivity.this, "账号或密码错误！", Toast.LENGTH_SHORT).show();
             }
             dialog.dismiss();
         }

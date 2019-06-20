@@ -31,7 +31,6 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
         /**
          * RadioGroup部分
          */
-
         radioGroup = findViewById(R.id.bottomGroup);
         rbtHome = findViewById(R.id.radioHome);
         rbtFunc = findViewById(R.id.radioFunc);
@@ -41,11 +40,8 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
+                    //setCurrentItem第二个参数控制页面切换动画 true:打开/false:关闭
                     case R.id.radioHome:
-                        /**
-                         * setCurrentItem第二个参数控制页面切换动画
-                         * true:打开/false:关闭
-                         */
                         viewPager.setCurrentItem(0, true);
                         break;
                     case R.id.radioFunc:
@@ -63,15 +59,15 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
          */
         viewPager = findViewById(R.id.viewpager);
 
-        FirstFragment infoFragment = new FirstFragment();
-        SecondFragment teamFragment = new SecondFragment();
-        ThirdFragment userFragment = new ThirdFragment();
-        List<Fragment> alFragment = new ArrayList<Fragment>();
-        alFragment.add(infoFragment);
-        alFragment.add(teamFragment);
-        alFragment.add(userFragment);
+        CompetitionFragment competitionFragment = new CompetitionFragment();
+        TeamFragment teamFragment = new TeamFragment();
+        UserFragment userFragment = new UserFragment();
+        List<Fragment> Fragments = new ArrayList<Fragment>();
+        Fragments.add(competitionFragment);
+        Fragments.add(teamFragment);
+        Fragments.add(userFragment);
         //ViewPager设置适配器
-        pageAdapter = new MyPageAdapter(getSupportFragmentManager(), alFragment);
+        pageAdapter = new MyPageAdapter(getSupportFragmentManager(), Fragments);
         viewPager.setAdapter(pageAdapter);
         //ViewPager显示第一个Fragment
         viewPager.setCurrentItem(0);

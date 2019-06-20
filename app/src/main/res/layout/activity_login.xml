@@ -127,7 +127,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/log_btn1"
+            android:id="@+id/log_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -141,7 +141,7 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/log_btn2"
+            android:id="@+id/log_btn_r"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"

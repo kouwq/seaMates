@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ThirdFragment">
+    tools:context=".UserFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,44 +60,26 @@
         <LinearLayout style="@style/FormMainLayoutStyle">
 
             <TextView
-                android:id="@+id/reg_tv_sex"
+                android:id="@+id/user_tv_sex"
                 style="@style/Register_LeftTextView"
                 android:text="@string/sex" />
 
-            <RadioGroup
-                android:id="@+id/reg_rg_sex"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal">
+            <TextView
+                android:id="@+id/user_sex"
+                style="@style/Register_RightEditText"
+                android:text="@string/sex"/>
 
-                <RadioButton
-                    android:id="@+id/reg_male"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="true"
-                    android:text="@string/reg_rad_male" />
-
-                <RadioButton
-                    android:id="@+id/reg_female"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="false"
-                    android:text="@string/reg_rad_fem" />
-            </RadioGroup>
         </LinearLayout>
 
         <LinearLayout style="@style/FormMainLayoutStyle">
 
             <TextView
-                android:id="@+id/reg_tv_phone"
+                android:id="@+id/user_tv_phone"
                 style="@style/Register_LeftTextView"
                 android:text="@string/phone" />
 
             <TextView
-                android:id="@+id/reg_et_phone"
+                android:id="@+id/user_phone"
                 style="@style/Register_RightEditText"
                 android:text="@string/phone_hint"/>
 
@@ -106,12 +88,12 @@
         <LinearLayout style="@style/FormMainLayoutStyle">
 
             <TextView
-                android:id="@+id/reg_tv_grade"
+                android:id="@+id/user_tv_grade"
                 style="@style/Register_LeftTextView"
                 android:text="@string/grade" />
 
             <TextView
-                android:id="@+id/reg_et_grade"
+                android:id="@+id/user_grade"
                 style="@style/Register_RightEditText"
                 android:text="@string/grade_hint" />
         </LinearLayout>
@@ -119,12 +101,12 @@
         <LinearLayout style="@style/FormMainLayoutStyle">
 
             <TextView
-                android:id="@+id/reg_tv_major"
+                android:id="@+id/user_tv_major"
                 style="@style/Register_LeftTextView"
                 android:text="@string/major" />
 
             <TextView
-                android:id="@+id/reg_et_major"
+                android:id="@+id/user_major"
                 style="@style/Register_RightEditText"
                 android:text="@string/major_hint"/>
         </LinearLayout>
@@ -132,7 +114,7 @@
         <LinearLayout style="@style/FormMainLayoutStyle">
 
             <TextView
-                android:id="@+id/reg_tv_info"
+                android:id="@+id/user_tv_info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -143,18 +125,19 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
             <TextView
-                android:id="@+id/reg_et_info"
+                android:id="@+id/user_info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:gravity="top"
                 android:hint="@string/idc_hint"
-                android:minHeight="50dp"
+                android:minHeight="60dp"
                 android:maxLines="10"
                 android:scrollbars="vertical" />
         </LinearLayout>
