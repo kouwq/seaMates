@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:icon="@mipmap/set"
-    >
+    android:icon="@mipmap/set">
+    <item
+        android:id="@+id/action_search"
+        android:title="搜索"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always" />
     <item
         android:id="@+id/menu_set"
         android:icon="@mipmap/set"
         android:title="@string/menu_label"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/open_list"
-        android:icon="@mipmap/set"
-        android:title="@string/menu_label"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
+
 </menu>

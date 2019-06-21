@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.Window;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,44 +78,44 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
         viewPager.addOnPageChangeListener(this);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.inf, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.inf, menu);
+        return true;
+    }
 
-//    @Override
-//    public boolean onPrepareOptionsMenu(Menu menu) {
-//        switch (viewPager.getCurrentItem()) {
-//            case 0:
-//                menu.findItem(R.id.menu_set).setVisible(false);
-//                menu.findItem(R.id.open_list).setVisible(true);
-//                break;
-//            case 1:
-//                menu.findItem(R.id.menu_set).setVisible(false);
-//                menu.findItem(R.id.open_list).setVisible(true);
-//                break;
-//            case 2:
-//                menu.findItem(R.id.menu_set).setVisible(true);
-//                menu.findItem(R.id.open_list).setVisible(false);
-//                break;
-//        }
-//        return super.onPrepareOptionsMenu(menu);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        if (id == R.id.menu_set) {
-//            Toast.makeText(this, "set.png", Toast.LENGTH_SHORT).show();
-//            return true;
-//        } else if (id == R.id.open_list) {
-//            Toast.makeText(this, "其他", Toast.LENGTH_SHORT).show();
-//            return true;
-//        } else {
-//            return super.onOptionsItemSelected(item);
-//        }
-//    }
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        switch (viewPager.getCurrentItem()) {
+            case 0:
+                menu.findItem(R.id.menu_set).setVisible(false);
+                menu.findItem(R.id.action_search).setVisible(true);
+                break;
+            case 1:
+                menu.findItem(R.id.menu_set).setVisible(false);
+                menu.findItem(R.id.action_search).setVisible(true);
+                break;
+            case 2:
+                menu.findItem(R.id.menu_set).setVisible(true);
+                menu.findItem(R.id.action_search).setVisible(false);
+                break;
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.menu_set) {
+            Toast.makeText(this, "set.png", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_search) {
+            Toast.makeText(this, "其他", Toast.LENGTH_SHORT).show();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     public void onPageScrolled(int i, float v, int i1) {

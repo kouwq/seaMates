@@ -155,7 +155,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             hashMap.put("stunum", params[0]);
             hashMap.put("pwd", params[1]);
             hashMap.put("url","android");
-            String url = "http://10.240.13.8:8080/mis_group/Login";
+            String url = "/Login";
             String ret = WebService.executeHttpPost(url, hashMap);
             return ret;
         }
@@ -171,6 +171,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 main.putExtra("pwd", pwd.getText().toString());
                 startActivityForResult(main, 2);
                 Toast.makeText(LoginActivity.this, "登陆seaMates", Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "onPostExecute: account="+account.getText().toString());
+                Log.i(TAG, "onPostExecute: pwd="+pwd.getText().toString());
                 Log.i(TAG, "info="+s);
             }
             dialog.dismiss();

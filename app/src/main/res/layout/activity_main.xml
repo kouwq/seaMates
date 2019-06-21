@@ -26,19 +26,19 @@
             style="@style/rg_btn_style"
             android:checked="true"
             android:drawableTop="@mipmap/info1"
-            android:text="info" />
+            android:text="@string/rb_cp" />
 
         <RadioButton
             android:id="@+id/radioFunc"
             style="@style/rg_btn_style"
             android:drawableTop="@mipmap/func1"
-            android:text="func" />
+            android:text="@string/rb_team" />
 
         <RadioButton
             android:id="@+id/radioSetting"
             style="@style/rg_btn_style"
             android:drawableTop="@mipmap/set"
-            android:text="set" />
+            android:text="@string/rb_user" />
     </RadioGroup>
 
 

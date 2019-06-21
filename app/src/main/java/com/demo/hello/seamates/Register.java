@@ -110,7 +110,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             hashMap.put("major", params[6]);
             hashMap.put("info", params[7]);
             hashMap.put("url", "android");
-            String url = "http://10.240.13.8:8080/mis_group/Register";
+            String url = "/Register";
             String ret = WebService.executeHttpPost(url, hashMap);
             return ret;
         }

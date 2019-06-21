@@ -32,4 +32,7 @@
     <string name="idc">introduction</string>
     <string name="idc_hint">self-introduce</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="rb_cp">competition</string>
+    <string name="rb_user">user</string>
+    <string name="rb_team">team</string>
 </resources>
