@@ -48,9 +48,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         addClearListener(pwd, imageView2);
         //获取注册页面传参
         Intent intent = getIntent();
-        String accountText=intent.getStringExtra("stunum");
-        String pwdText=intent.getStringExtra("pwd");
-        if(accountText!=null){
+        String accountText = intent.getStringExtra("stunum");
+        String pwdText = intent.getStringExtra("pwd");
+        if (accountText != null) {
             account.setText(accountText);
             pwd.setText(pwdText);
         }
@@ -98,8 +98,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     dialog.setCancelable(false);
                     dialog.show();
                     // 创建子线程
-                    Log.i(TAG, "onClick: user="+user);
-                    new LoginTask().execute(user,pwd1);
+                    Log.i(TAG, "onClick: user=" + user);
+                    new LoginTask().execute(user, pwd1);
 //                    new Thread(new MyThread()).start();
 
                     break;
@@ -120,15 +120,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    if(info.length()>0){
-                        Log.i(TAG,"info="+info);
+                    if (info.length() > 0) {
+                        Log.i(TAG, "info=" + info);
                         Intent main = new Intent(LoginActivity.this, MainActivity.class);
 
                         startActivityForResult(main, 2);
                         Toast.makeText(LoginActivity.this, "登陆seaMates", Toast.LENGTH_SHORT).show();
                         Log.i(TAG, "Log in");
-                        Log.i(TAG, "run: info="+info);
-                    }else{
+                        Log.i(TAG, "run: info=" + info);
+                    } else {
                         Toast.makeText(LoginActivity.this, "账号或密码错误！", Toast.LENGTH_SHORT).show();
                     }
                     dialog.dismiss();
@@ -145,6 +145,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         return false;
     }
+
     private class LoginTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
@@ -154,7 +155,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             HashMap<String, String> hashMap = new HashMap<>();
             hashMap.put("stunum", params[0]);
             hashMap.put("pwd", params[1]);
-            hashMap.put("url","android");
+            hashMap.put("url", "android");
             String url = "/Login";
             String ret = WebService.executeHttpPost(url, hashMap);
             return ret;
@@ -162,18 +163,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         @Override
         protected void onPostExecute(String s) {
-            if(s.equals("0")||s.length()==0){
+            if (s.equals("0") || s.length() == 0) {
                 Toast.makeText(LoginActivity.this, "账号或密码错误！", Toast.LENGTH_SHORT).show();
-            }else{
-                Log.i(TAG,"info="+s.length());
+            } else {
+                Log.i(TAG, "info=" + s.length());
                 Intent main = new Intent(LoginActivity.this, MainActivity.class);
                 main.putExtra("account", account.getText().toString());
                 main.putExtra("pwd", pwd.getText().toString());
                 startActivityForResult(main, 2);
                 Toast.makeText(LoginActivity.this, "登陆seaMates", Toast.LENGTH_SHORT).show();
-                Log.i(TAG, "onPostExecute: account="+account.getText().toString());
-                Log.i(TAG, "onPostExecute: pwd="+pwd.getText().toString());
-                Log.i(TAG, "info="+s);
+                Log.i(TAG, "onPostExecute: account=" + account.getText().toString());
+                Log.i(TAG, "onPostExecute: pwd=" + pwd.getText().toString());
+                Log.i(TAG, "info=" + s);
             }
             dialog.dismiss();
         }

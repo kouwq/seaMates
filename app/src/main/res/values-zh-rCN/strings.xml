@@ -9,16 +9,9 @@
     <string name="pwd">密码</string>
     <string name="welcome">欢迎注册</string>
     <string name="phone_hint">17356562525</string>
-    <string name="email">邮箱</string>
-    <string name="address">家庭地址</string>
-    <string name="hello">您好</string>
     <string name="menu_label">设置</string>
-    <string name="user_icon">用户图像</string>
-    <string name="stunum">41711001</string>
-    <string name="clear_icon">清除</string>
     <string name="pwd_rem">记住密码</string>
     <string name="username">用户名</string>
-    <string name="location">地址</string>
     <string name="submit">注册</string>
     <string name="sex">性别</string>
     <string name="phone">电话号</string>
@@ -31,8 +24,9 @@
     <string name="username_hint">姓名</string>
     <string name="idc">自我介绍</string>
     <string name="idc_hint">介绍一下特点</string>
-    <string name="title_activity_main2">第二个页面</string>
     <string name="rb_cp">比赛信息</string>
     <string name="rb_user">用户信息</string>
     <string name="rb_team">队伍信息</string>
+    <string name="leadText">队长：</string>
+    <string name="qqText">QQ：</string>
 </resources>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -25,19 +24,19 @@
             android:id="@+id/radioHome"
             style="@style/rg_btn_style"
             android:checked="true"
-            android:drawableTop="@mipmap/info1"
+            android:drawableTop="@drawable/rb_cp_selector"
             android:text="@string/rb_cp" />
 
         <RadioButton
             android:id="@+id/radioFunc"
             style="@style/rg_btn_style"
-            android:drawableTop="@mipmap/func1"
+            android:drawableTop="@drawable/rb_team_selector"
             android:text="@string/rb_team" />
 
         <RadioButton
             android:id="@+id/radioSetting"
             style="@style/rg_btn_style"
-            android:drawableTop="@mipmap/set"
+            android:drawableTop="@drawable/rb_user_selector"
             android:text="@string/rb_user" />
     </RadioGroup>
 

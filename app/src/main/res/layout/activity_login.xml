@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bg6"
@@ -15,7 +14,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/log_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -35,14 +33,12 @@
             android:layout_marginTop="40dp">
 
             <ImageView
-                android:id="@+id/iv_userIconName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 app:srcCompat="@mipmap/log" />
 
             <View
-                android:id="@+id/viewName"
                 android:layout_width="2dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -73,14 +69,12 @@
         <LinearLayout style="@style/FormMainLayoutStyle">
 
             <ImageView
-                android:id="@+id/iv_userIconPwd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 app:srcCompat="@mipmap/pwd" />
 
             <View
-                android:id="@+id/viewPwd"
                 android:layout_width="2dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -112,7 +106,6 @@
         <LinearLayout style="@style/FormMainLayoutStyle">
 
             <CheckBox
-                android:id="@+id/cb_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -126,31 +119,35 @@
                 app:buttonTint="@color/black" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/log_btn"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="10dp"
-            android:background="@null"
-            android:gravity="center"
-            android:text="@string/log_in"
-            android:textColor="#fff"
-            android:textSize="18sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/log_btn_r"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@null"
-            android:gravity="center"
-            android:text="@string/log_up"
-            android:textColor="#fff"
-            android:textSize="18sp" />
+            <Button
+                android:id="@+id/log_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:background="@drawable/btn_shape"
+                android:gravity="center"
+                android:text="@string/log_in"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/log_btn_r"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_shape"
+                android:gravity="center"
+                android:text="@string/log_up"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

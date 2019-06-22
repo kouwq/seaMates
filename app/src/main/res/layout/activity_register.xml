@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg4"
+    android:background="@color/primary_light"
     android:orientation="vertical"
     tools:context=".Register">
 
@@ -20,7 +20,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/reg_tv_wel"
                 style="@style/AppTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +43,6 @@
             <LinearLayout style="@style/FormMainLayoutStyle">
 
                 <TextView
-                    android:id="@+id/reg_tv_account"
                     style="@style/Register_LeftTextView"
                     android:text="@string/account" />
 
@@ -58,7 +56,6 @@
             <LinearLayout style="@style/FormMainLayoutStyle">
 
                 <TextView
-                    android:id="@+id/reg_tv_name"
                     style="@style/Register_LeftTextView"
                     android:text="@string/username" />
 
@@ -72,7 +69,6 @@
             <LinearLayout style="@style/FormMainLayoutStyle">
 
                 <TextView
-                    android:id="@+id/reg_tv_sex"
                     style="@style/Register_LeftTextView"
                     android:text="@string/sex" />
 
@@ -92,7 +88,6 @@
                         android:text="@string/reg_rad_male" />
 
                     <RadioButton
-                        android:id="@+id/reg_female"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -104,7 +99,6 @@
             <LinearLayout style="@style/FormMainLayoutStyle">
 
                 <TextView
-                    android:id="@+id/reg_tv_pwd"
                     style="@style/Register_LeftTextView"
                     android:text="@string/pwd" />
 
@@ -119,7 +113,6 @@
             <LinearLayout style="@style/FormMainLayoutStyle">
 
                 <TextView
-                    android:id="@+id/reg_tv_phone"
                     style="@style/Register_LeftTextView"
                     android:text="@string/phone" />
 
@@ -134,7 +127,6 @@
             <LinearLayout style="@style/FormMainLayoutStyle">
 
                 <TextView
-                    android:id="@+id/reg_tv_grade"
                     style="@style/Register_LeftTextView"
                     android:text="@string/grade" />
 
@@ -148,7 +140,6 @@
             <LinearLayout style="@style/FormMainLayoutStyle">
 
                 <TextView
-                    android:id="@+id/reg_tv_major"
                     style="@style/Register_LeftTextView"
                     android:text="@string/major" />
 
@@ -162,7 +153,6 @@
             <LinearLayout style="@style/FormMainLayoutStyle">
 
                 <TextView
-                    android:id="@+id/reg_tv_info"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -199,10 +189,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@null"
+                android:background="@drawable/btn_shape"
                 android:text="@string/submit"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
         </FrameLayout>
     </LinearLayout>
 </ScrollView>

@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
@@ -15,23 +15,22 @@
         <item name="android:button">@null</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:layout_weight">3</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:textSize">12sp</item>
         <item name="android:drawablePadding">1dp</item>
-        <item name="android:textColor">@color/primary</item>
+        <item name="android:textColor">@drawable/rb_focus_color</item>
         <item name="android:background">@null</item>
     </style>
 
     <style name="FormMainLayoutStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">15dp</item>
-        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
         <item name="android:layout_marginTop">2dp</item>
         <item name="android:layout_marginBottom">0dp</item>
-        <item name="android:background">@null</item>
+        <item name="android:background">@color/icons</item>
         <item name="android:orientation">horizontal</item>
-        <item name="android:padding">0dp</item>
     </style>
 
     <style name="Register_LeftTextView">
@@ -40,7 +39,7 @@
         <item name="android:padding">5dp</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:layout_margin">5dp</item>
-        <item name="android:background">@null</item>
+        <item name="android:background">@color/icons</item>
     </style>
 
     <style name="Register_RightEditText">
@@ -50,7 +49,6 @@
         <item name="android:ems">10</item>
         <item name="android:padding">5dp</item>
     </style>
-
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

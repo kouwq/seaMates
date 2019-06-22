@@ -33,7 +33,7 @@ public class WebService {
             Log.i(TAG, "executeHttpPost: stringBuilder= " + stringBuilder);
             byte[] data = s.substring(0, s.length() - 1).getBytes();
             //服务器IP地址
-            URL url = new URL("http://10.32.22.96:8080/mis_group" + hostUrl);
+            URL url = new URL("http://10.32.32.144:8080/mis_group" + hostUrl);
             Log.i(TAG, "executeHttpPost: url= " + url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setConnectTimeout(3000); //设置连接超时时间

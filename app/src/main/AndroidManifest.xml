@@ -14,9 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".LoginActivity">
-
-        </activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -24,14 +22,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <!-- <activity android:name=".CompetitionFragment" /> -->
-        <!-- <activity -->
-        <!-- android:name=".Main2Activity" -->
-        <!-- android:label="@string/title_activity_main2" -->
-        <!-- android:theme="@style/AppTheme"></activity> -->
-        <activity android:name=".CompetitionInfoActivity"></activity>
+        <activity android:name=".CompetitionInfoActivity" />
+        <activity android:name=".TeamInfoActivity" />
+        <activity android:name=".InitiateTeamActivity"></activity>
     </application>
 
 </manifest>

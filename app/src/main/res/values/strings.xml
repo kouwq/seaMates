@@ -8,17 +8,10 @@
     <string name="pwd">Password</string>
     <string name="welcome">Welcome to register!</string>
     <string name="phone_hint">17356562525</string>
-    <string name="email">Email</string>
-    <string name="address">Address</string>
 
-    <string name="hello">Hello blank fragment</string>
     <string name="menu_label">settings</string>
-    <string name="user_icon">userIcon</string>
-    <string name="stunum">41711001</string>
-    <string name="clear_icon">clear</string>
     <string name="pwd_rem">remember the password</string>
     <string name="username">username</string>
-    <string name="location">location</string>
     <string name="submit">Submit</string>
     <string name="sex">sex</string>
     <string name="phone">phone</string>
@@ -31,8 +24,9 @@
     <string name="username_hint">name</string>
     <string name="idc">introduction</string>
     <string name="idc_hint">self-introduce</string>
-    <string name="title_activity_main2">Main2Activity</string>
     <string name="rb_cp">competition</string>
     <string name="rb_user">user</string>
     <string name="rb_team">team</string>
+    <string name="leadText">leader:</string>
+    <string name="qqText">QQ:</string>
 </resources>

@@ -28,7 +28,7 @@ public class UserFragment extends Fragment implements Runnable {
     private Handler handler;
     private static final String TAG = "UserFragment";
     private TextView name, account, sex, phone, grade, major, info;
-    private String nameText,accountText,sexText,phoneText,gradeText,majorText,infoText;
+    private String nameText, accountText, sexText, phoneText, gradeText, majorText, infoText;
 
     public UserFragment() {
         // Required empty public constructor
@@ -50,10 +50,10 @@ public class UserFragment extends Fragment implements Runnable {
         info = view.findViewById(R.id.user_info);
 
 //        accountText=getActivity().getIntent().getStringExtra("account");
-        accountText="41711001";
+        accountText = "41711001";
         //获取sp里面保存的数据
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user", Activity.MODE_PRIVATE);
-        if(accountText.equals(sharedPreferences.getString("account", ""))){
+        if (accountText.equals(sharedPreferences.getString("account", ""))) {
             nameText = sharedPreferences.getString("name", "");
             sexText = sharedPreferences.getString("sex", "");
             phoneText = sharedPreferences.getString("phone", "");
@@ -61,7 +61,7 @@ public class UserFragment extends Fragment implements Runnable {
             majorText = sharedPreferences.getString("major", "");
             infoText = sharedPreferences.getString("info", "");
 
-        }else {
+        } else {
 
             //开启子线程
             Thread t = new Thread(this);
@@ -71,13 +71,13 @@ public class UserFragment extends Fragment implements Runnable {
                 @Override
                 public void handleMessage(Message msg) {
                     if (msg.what == 3) {
-                        Bundle bdl = (Bundle)msg.obj;
-                        nameText =bdl.getString("name");
-                        sexText =bdl.getString("sex");
-                        phoneText =bdl.getString("phone");
-                        gradeText =bdl.getString("grade");
-                        majorText =bdl.getString("major");
-                        infoText =bdl.getString("info");
+                        Bundle bdl = (Bundle) msg.obj;
+                        nameText = bdl.getString("name");
+                        sexText = bdl.getString("sex");
+                        phoneText = bdl.getString("phone");
+                        gradeText = bdl.getString("grade");
+                        majorText = bdl.getString("major");
+                        infoText = bdl.getString("info");
                         //保存更新的数据
                         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user", Activity.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();

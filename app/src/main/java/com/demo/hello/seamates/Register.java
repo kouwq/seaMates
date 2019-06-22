@@ -30,7 +30,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         setContentView(R.layout.activity_register);
         account = findViewById(R.id.reg_et_account);
         pwd = findViewById(R.id.reg_et_pwd);
-        sex =findViewById(R.id.reg_male);
+        sex = findViewById(R.id.reg_male);
         username = findViewById(R.id.reg_et_name);
         phone = findViewById(R.id.reg_et_phone);
         major = findViewById(R.id.reg_et_major);
@@ -118,9 +118,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         @Override
         protected void onPostExecute(String s) {
 //            Toast.makeText(Register.this, s, Toast.LENGTH_SHORT).show();
-            if(s.equals("0")||s.length()==0) {
+            if (s.equals("0") || s.length() == 0) {
                 Toast.makeText(Register.this, "注册失败！！！", Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
                 Intent main = new Intent(Register.this, LoginActivity.class);
                 main.putExtra("stunum", account.getText().toString());
                 main.putExtra("account", username.getText().toString());

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:orientation="vertical"
+    tools:context=".InitiateTeamActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:background="@color/icons"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/AppTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:padding="10dp"
+                android:text="创建队伍"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout style="@style/FormMainLayoutStyle">
+
+                <TextView
+                    style="@style/Register_LeftTextView"
+                    android:text="比赛类型" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="@color/black" />
+
+                <EditText
+                    android:id="@+id/teamAdd_cpName"
+                    style="@style/Register_RightEditText"
+                    android:hint="@null"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormMainLayoutStyle">
+
+                <TextView
+                    style="@style/Register_LeftTextView"
+                    android:text="队伍名称" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="@color/black" />
+
+                <EditText
+                    android:id="@+id/teamAdd_teamName"
+                    style="@style/Register_RightEditText"
+                    android:hint="@null"
+                    android:inputType="textPostalAddress" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormMainLayoutStyle">
+
+                <TextView
+                    style="@style/Register_LeftTextView"
+                    android:text="队伍人数" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="@color/black" />
+
+                <EditText
+                    android:id="@+id/teamAdd_matesNum"
+                    style="@style/Register_RightEditText"
+                    android:hint="@null"
+                    android:inputType="textPassword" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormMainLayoutStyle">
+
+                <TextView
+                    style="@style/Register_LeftTextView"
+                    android:text="QQ" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="@color/black" />
+
+                <EditText
+                    android:id="@+id/teamAdd_qq"
+                    style="@style/Register_RightEditText"
+                    android:hint="@null"
+                    android:inputType="textPassword" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormMainLayoutStyle">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="队员要求" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/FormMainLayoutStyle"
+                android:layout_height="80dp">
+
+                <EditText
+                    android:id="@+id/teamAdd_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:hint="@null"
+                    android:inputType="textMultiLine"
+                    android:maxLines="50"
+                    android:scrollbars="vertical" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom">
+
+        <Button
+            android:id="@+id/teamAdd_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_shape"
+            android:text="创建"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </FrameLayout>
+</LinearLayout>

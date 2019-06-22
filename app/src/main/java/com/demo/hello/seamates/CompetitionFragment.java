@@ -63,7 +63,7 @@ public class CompetitionFragment extends Fragment implements Runnable, AdapterVi
         Log.i("List", "lastDateStr=" + updateDate);
         //初始化界面
         list = view.findViewById(R.id.cp_lv);
-        ListAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data);
+        ListAdapter adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, data);
         list.setAdapter(adapter);
 
         list.setEmptyView(view.findViewById(R.id.cp_tv_nodata));
@@ -81,8 +81,8 @@ public class CompetitionFragment extends Fragment implements Runnable, AdapterVi
                     listItems = (List<HashMap<String, String>>) msg.obj;
                     listItemAdapter = new SimpleAdapter(getActivity(), listItems,
                             R.layout.competition_list,
-                            new String[]{"cp_name", "c_stime"},
-                            new int[]{R.id.itemTitle, R.id.itemDetail}
+                            new String[]{"cp_name", "cp_id", "c_stime"},
+                            new int[]{R.id.cpList_title, R.id.cpList_id, R.id.cpList_time}
                     );
                     list.setAdapter(listItemAdapter);
 
@@ -111,9 +111,10 @@ public class CompetitionFragment extends Fragment implements Runnable, AdapterVi
             //如果相等，则不从网络中获取数据
             Log.i("run", "日期相等，从数据库中获取数据");
             DBManager manager = new DBManager(getActivity());
-            for (CompetitionItem competitionItem : manager.listAll()) {
+            for (CompetitionItem competitionItem : manager.listAllCp()) {
                 HashMap<String, String> stringHashMap = new HashMap<>();
                 stringHashMap.put("cp_name", competitionItem.getCpName());
+                stringHashMap.put("cp_id", String.valueOf(competitionItem.getId()));
                 stringHashMap.put("c_stime", competitionItem.getCpStime());
                 retList.add(stringHashMap);
             }
@@ -128,7 +129,7 @@ public class CompetitionFragment extends Fragment implements Runnable, AdapterVi
                 hashMap.put("url", "android");
                 String url = "/SendCompetition";
                 String info = WebService.executeHttpPost(url, hashMap);
-                if (info.equals(0) || info.length() == 0) {
+                if (info.equals("0") || info.length() == 0) {
                     Looper.prepare();
                     Toast.makeText(getActivity(), "获取信息失败", Toast.LENGTH_SHORT).show();
                     Looper.loop();
@@ -139,7 +140,7 @@ public class CompetitionFragment extends Fragment implements Runnable, AdapterVi
                         while (iterator.hasNext()) {
                             String key = iterator.next();
                             JSONObject json = jsonObject.getJSONObject(key);
-                            HashMap<String, String> map = new HashMap<String, String>();
+                            HashMap<String, String> map = new HashMap<>();
                             String cp_id = json.getString("cp_id");
                             String cp_name = json.getString("cp_name");
                             String category = json.getString("category");
@@ -150,7 +151,7 @@ public class CompetitionFragment extends Fragment implements Runnable, AdapterVi
                             map.put("cp_id", cp_id);
                             map.put("cp_name", cp_name);
                             map.put("category", category);
-                            map.put("c_stime", c_stime);
+                            map.put("c_stime", "开始时间："+c_stime);
                             map.put("c_etime", c_etime);
                             map.put("c_info", c_info);
                             retList.add(map);
@@ -167,9 +168,9 @@ public class CompetitionFragment extends Fragment implements Runnable, AdapterVi
                 }
                 //把数据写入数据库中
                 DBManager manager = new DBManager(getActivity());
-                manager.deleteAll();
+                manager.deleteAllCp();
                 Log.i("db", "删除所有记录");
-                manager.addAll(cpList);
+                manager.addAllCp(cpList);
                 Log.i("db", "添加新记录集");
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -190,8 +191,11 @@ public class CompetitionFragment extends Fragment implements Runnable, AdapterVi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        HashMap<String, String> map = (HashMap<String, String>) parent.getItemAtPosition(position);
+        int cp_id = Integer.parseInt(map.get("cp_id"));
+
         Intent info = new Intent(getActivity(), CompetitionInfoActivity.class);
-        info.putExtra("cpname", "");
-        startActivityForResult(info, 3);
+        info.putExtra("cp_id", cp_id);
+        startActivity(info);
     }
 }

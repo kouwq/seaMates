@@ -2,11 +2,11 @@ package com.demo.hello.seamates;
 
 public class CompetitionItem {
     private int id;
-    private String cpName,category,cpStime,cpEtime,cpInfo;
+    private String cpName, category, cpStime, cpEtime, cpInfo;
 
     public CompetitionItem() {
         super();
-        this.cpName="";
+        this.cpName = "";
         this.category = "";
         this.cpStime = "";
         this.cpEtime = "";
