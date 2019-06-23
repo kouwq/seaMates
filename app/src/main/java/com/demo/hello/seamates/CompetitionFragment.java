@@ -115,7 +115,7 @@ public class CompetitionFragment extends Fragment implements Runnable, AdapterVi
                 HashMap<String, String> stringHashMap = new HashMap<>();
                 stringHashMap.put("cp_name", competitionItem.getCpName());
                 stringHashMap.put("cp_id", String.valueOf(competitionItem.getId()));
-                stringHashMap.put("c_stime", competitionItem.getCpStime());
+                stringHashMap.put("c_stime", "开始时间：" + competitionItem.getCpStime());
                 retList.add(stringHashMap);
             }
         } else {
@@ -151,7 +151,7 @@ public class CompetitionFragment extends Fragment implements Runnable, AdapterVi
                             map.put("cp_id", cp_id);
                             map.put("cp_name", cp_name);
                             map.put("category", category);
-                            map.put("c_stime", "开始时间："+c_stime);
+                            map.put("c_stime", "开始时间：" + c_stime);
                             map.put("c_etime", c_etime);
                             map.put("c_info", c_info);
                             retList.add(map);

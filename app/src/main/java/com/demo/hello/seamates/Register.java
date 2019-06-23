@@ -28,7 +28,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("注册页面");
         setContentView(R.layout.activity_register);
+
         account = findViewById(R.id.reg_et_account);
         pwd = findViewById(R.id.reg_et_pwd);
         sex = findViewById(R.id.reg_male);

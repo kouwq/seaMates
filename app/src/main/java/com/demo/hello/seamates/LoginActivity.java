@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("登陆页面");
         setContentView(R.layout.activity_login);
 
         //获取控件
@@ -79,11 +80,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Log.i(TAG, "register");
                 break;
             case R.id.log_btn:
-                String user = account.getText().toString();
-                String pwd1 = pwd.getText().toString();
-                if (user.length() == 0) {
+                accountText = account.getText().toString();
+                pwdText = pwd.getText().toString();
+                if (accountText.length() == 0) {
                     Toast.makeText(this, "账号不能为空！", Toast.LENGTH_SHORT).show();
-                } else if (pwd1.length() == 0) {
+                } else if (pwdText.length() == 0) {
                     Toast.makeText(this, "密码不能为空！", Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -101,8 +102,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     dialog.setCancelable(false);
                     dialog.show();
                     //异步操作
-                    Log.i(TAG, "onClick: user=" + user);
-                    new LoginTask().execute(user, pwd1);
+                    Log.i(TAG, "onClick: accountText=" + accountText);
+                    new LoginTask().execute(accountText, pwdText);
                     // 创建子线程
 //                    new Thread(new MyThread()).start();
 
@@ -129,7 +130,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Intent main = new Intent(LoginActivity.this, MainActivity.class);
 
                         startActivityForResult(main, 2);
-                        Toast.makeText(LoginActivity.this, "登陆seaMates", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "登陆SeaMates", Toast.LENGTH_SHORT).show();
                         Log.i(TAG, "Log in");
                         Log.i(TAG, "run: info=" + info);
                     } else {
@@ -174,10 +175,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Log.i(TAG, "onPostExecute: account=" + accountText);
                 Log.i(TAG, "onPostExecute: pwd=" + pwdText);
                 Log.i(TAG, "info=" + s);
-                Toast.makeText(LoginActivity.this, "登陆seaMates", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "登陆SeaMates", Toast.LENGTH_SHORT).show();
                 Intent main = new Intent(LoginActivity.this, MainActivity.class);
                 main.putExtra("account", accountText);
-                main.putExtra("pwd", pwdText);
+                main.putExtra("source", "login");
                 main.putExtra("username", userNameText);
                 startActivityForResult(main, 2);
             }

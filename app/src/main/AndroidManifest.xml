@@ -14,18 +14,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".Register" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".CompetitionInfoActivity" />
-        <activity android:name=".TeamInfoActivity" />
-        <activity android:name=".InitiateTeamActivity"></activity>
+        <activity android:name=".Register" />
+        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".CompetitionInfoActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".TeamInfoActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".InitiateTeamActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

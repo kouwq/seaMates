@@ -123,7 +123,7 @@ public class DBManager {
         values.put("qq", item.getQq());
         values.put("detail", item.getDetail());
         db.insert(TBTEAM, null, values);
-        Log.i(TAG, "addTeam: "+item.getTeamName());
+        Log.i(TAG, "addTeam: " + item.getTeamName());
         db.close();
     }
 

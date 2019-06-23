@@ -1,18 +1,27 @@
 package com.demo.hello.seamates;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 public class TeamInfoActivity extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("队伍详情信息");
         setContentView(R.layout.activity_team_info);
-        Intent intent =getIntent();
-        int team_id = intent.getIntExtra("team_id",0);
+        //返回按钮
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        Intent intent = getIntent();
+        int team_id = intent.getIntExtra("team_id", 0);
 
         DBManager manager = new DBManager(this);
         TeamItem teamItem = manager.findTeamById(team_id);
@@ -31,10 +40,12 @@ public class TeamInfoActivity extends AppCompatActivity {
         TextView matesNum = findViewById(R.id.teamInfo_matesNum);
 
         title.setText(titleText);
-        cpName.setText("比赛类型："+cpNameText);
+        cpName.setText(getString(R.string.category) + cpNameText);
         leader.setText(getString(R.string.leadText) + leaderText);
-        detail.setText("说明："+detailText);
+        detail.setText(getString(R.string.refer) + detailText);
         qq.setText(getString(R.string.qqText) + qqText);
-        matesNum.setText("组队人数："+String.valueOf(matesNumText));
+        matesNum.setText(getString(R.string.matesNum) + String.valueOf(matesNumText));
+
+
     }
 }

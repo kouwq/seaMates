@@ -25,7 +25,11 @@ public class InitiateTeamActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("创建比赛");
         setContentView(R.layout.activity_initiate_team);
+        //返回按钮
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         //获取sp里面保存的数据
         SharedPreferences sharedPreferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
@@ -68,10 +72,10 @@ public class InitiateTeamActivity extends AppCompatActivity implements View.OnCl
                 } else if (qqText.length() == 0) {
                     Toast.makeText(InitiateTeamActivity.this, "qq不能为空！", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
-                } else{
+                } else {
                     // 异步传输
                     new InitiateTask().execute(cpNameText, teamNameText, usernameText, matesNumText, qqText, detailText);
-                    Log.i(TAG, "onClick: cpname= "+cpNameText);
+                    Log.i(TAG, "onClick: cpname= " + cpNameText);
                     dialog.dismiss();
 
                 }
@@ -119,7 +123,7 @@ public class InitiateTeamActivity extends AppCompatActivity implements View.OnCl
                 DBManager manager = new DBManager(InitiateTeamActivity.this);
                 manager.addTeam(teamItem);
                 Intent intent = getIntent();
-                setResult(5,intent);
+                setResult(5, intent);
                 finish();
             }
         }

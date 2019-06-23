@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light"
+    android:background="@null"
     android:orientation="vertical"
     tools:context=".InitiateTeamActivity">
 
@@ -47,8 +47,7 @@
                     style="@style/Register_LeftTextView"
                     android:text="比赛类型" />
 
-                <View
-                    style="@style/viewStyle"/>
+                <View style="@style/viewStyle" />
 
                 <EditText
                     android:id="@+id/teamAdd_cpName"
@@ -63,8 +62,7 @@
                     style="@style/Register_LeftTextView"
                     android:text="队伍名称" />
 
-                <View
-                    style="@style/viewStyle"/>
+                <View style="@style/viewStyle" />
 
                 <EditText
                     android:id="@+id/teamAdd_teamName"
@@ -79,8 +77,7 @@
                     style="@style/Register_LeftTextView"
                     android:text="队伍人数" />
 
-                <View
-                    style="@style/viewStyle"/>
+                <View style="@style/viewStyle" />
 
                 <EditText
                     android:id="@+id/teamAdd_matesNum"
@@ -95,8 +92,7 @@
                     style="@style/Register_LeftTextView"
                     android:text="QQ" />
 
-                <View
-                    style="@style/viewStyle"/>
+                <View style="@style/viewStyle" />
 
                 <EditText
                     android:id="@+id/teamAdd_qq"
@@ -125,6 +121,7 @@
                     android:background="@color/primary_dark" />
 
             </LinearLayout>
+
             <LinearLayout
                 style="@style/FormMainLayoutStyle"
                 android:layout_height="80dp">
@@ -133,11 +130,21 @@
                     android:id="@+id/teamAdd_detail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@null"
                     android:gravity="top"
-                    android:hint="@null"
+                    android:hint="@string/idc_hint"
                     android:inputType="textMultiLine"
-                    android:maxLines="50"
+                    android:maxLines="10"
                     android:scrollbars="vertical" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormMainLayoutStyle">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/primary_dark" />
+
             </LinearLayout>
         </LinearLayout>
 
@@ -146,13 +153,13 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="bottom">
+        android:layout_gravity="center">
 
         <Button
             android:id="@+id/teamAdd_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
+            android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_shape"
             android:text="创建"

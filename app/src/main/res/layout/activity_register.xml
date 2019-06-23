@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light"
+    android:background="@null"
     android:orientation="vertical"
     tools:context=".Register">
 
@@ -52,7 +52,7 @@
                     android:id="@+id/reg_et_account"
                     style="@style/Register_RightEditText"
                     android:hint="@string/account_hint"
-                    android:inputType="none" />
+                    android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout style="@style/FormMainLayoutStyle">
@@ -66,8 +66,7 @@
                 <EditText
                     android:id="@+id/reg_et_name"
                     style="@style/Register_RightEditText"
-                    android:hint="@string/username_hint"
-                    android:inputType="textPostalAddress" />
+                    android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout style="@style/FormMainLayoutStyle">
@@ -113,7 +112,6 @@
                 <EditText
                     android:id="@+id/reg_et_pwd"
                     style="@style/Register_RightEditText"
-                    android:hint="@string/pwd_hint"
                     android:inputType="textPassword" />
             </LinearLayout>
 
@@ -132,21 +130,6 @@
                     android:hint="@string/phone_hint"
                     android:inputType="phone" />
 
-            </LinearLayout>
-
-            <LinearLayout style="@style/FormMainLayoutStyle">
-
-                <TextView
-                    style="@style/Register_LeftTextView"
-                    android:text="@string/grade" />
-
-                <View style="@style/viewStyle" />
-
-                <EditText
-                    android:id="@+id/reg_et_grade"
-                    style="@style/Register_RightEditText"
-                    android:hint="@string/grade_hint"
-                    android:inputType="number" />
             </LinearLayout>
 
             <LinearLayout style="@style/FormMainLayoutStyle">
@@ -186,7 +169,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="100dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp">
 
@@ -201,6 +184,15 @@
                     android:maxLines="10"
                     android:scrollbars="vertical" />
             </LinearLayout>
+
+            <LinearLayout style="@style/FormMainLayoutStyle">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/primary_dark" />
+
+            </LinearLayout>
         </LinearLayout>
 
         <FrameLayout
@@ -212,6 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/btn_shape"
                 android:text="@string/submit"
                 android:textColor="@color/black"
