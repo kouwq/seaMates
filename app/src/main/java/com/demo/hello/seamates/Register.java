@@ -17,7 +17,8 @@ import java.util.HashMap;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
     private final String TAG = "Register";
-    private EditText account, pwd, username, phone, major, info, grade;
+    private EditText account, pwd, username, phone, major, info;
+    String accountText, pwdText, sexText, userNameText, phoneText, majorText, infoText;
     private RadioGroup radioGroup;
     private RadioButton sex;
     private Button sub;
@@ -34,7 +35,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         username = findViewById(R.id.reg_et_name);
         phone = findViewById(R.id.reg_et_phone);
         major = findViewById(R.id.reg_et_major);
-        grade = findViewById(R.id.reg_et_grade);
         info = findViewById(R.id.reg_et_info);
 
         radioGroup = findViewById(R.id.reg_rg_sex);
@@ -51,33 +51,30 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        String accountText = account.getText().toString();
-        String pwdText = pwd.getText().toString();
-        String sexText = sex.getText().toString();
-        String usernameText = username.getText().toString();
-        String phoneText = phone.getText().toString();
-        String majorText = major.getText().toString();
-        String gradeText = grade.getText().toString();
-        String infoText = info.getText().toString();
+        accountText = account.getText().toString();
+        pwdText = pwd.getText().toString();
+        sexText = sex.getText().toString();
+        userNameText = username.getText().toString();
+        phoneText = phone.getText().toString();
+        majorText = major.getText().toString();
+        infoText = info.getText().toString();
 
         Log.i(TAG, "onClick: account=" + accountText);
         Log.i(TAG, "onClick: pwd=" + pwdText);
         Log.i(TAG, "onClick: sex=" + sexText);
-        Log.i(TAG, "onClick: username=" + usernameText);
+        Log.i(TAG, "onClick: username=" + userNameText);
         Log.i(TAG, "onClick: phone=" + phoneText);
 
         if (accountText.length() == 0) {
             Toast.makeText(this, "账号不能为空！", Toast.LENGTH_SHORT).show();
         } else if (pwdText.length() == 0) {
             Toast.makeText(this, "密码不能为空！", Toast.LENGTH_SHORT).show();
-        } else if (usernameText.length() == 0) {
+        } else if (userNameText.length() == 0) {
             Toast.makeText(this, "用户名不能为空！", Toast.LENGTH_SHORT).show();
         } else if (phoneText.length() == 0) {
             Toast.makeText(this, "电话不能为空！", Toast.LENGTH_SHORT).show();
         } else if (majorText.length() == 0) {
             Toast.makeText(this, "专业不能为空！", Toast.LENGTH_SHORT).show();
-        } else if (gradeText.length() == 0) {
-            Toast.makeText(this, "年级不能为空！", Toast.LENGTH_SHORT).show();
         } else {
 
             // 提示框
@@ -87,7 +84,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             dialog.setCancelable(false);
             dialog.show();
             // 异步传输
-            new RegisterTask().execute(accountText, pwdText, usernameText, sexText, phoneText, gradeText, majorText, infoText);
+            new RegisterTask().execute(accountText, pwdText, userNameText, sexText, phoneText, majorText, infoText);
 //                    new Thread(new MyThread()).start();
 
         }
@@ -106,9 +103,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             hashMap.put("username", params[2]);
             hashMap.put("sex", params[3]);
             hashMap.put("phone", params[4]);
-            hashMap.put("grade", params[5]);
-            hashMap.put("major", params[6]);
-            hashMap.put("info", params[7]);
+            hashMap.put("major", params[5]);
+            hashMap.put("info", params[6]);
             hashMap.put("url", "android");
             String url = "/Register";
             String ret = WebService.executeHttpPost(url, hashMap);
@@ -121,15 +117,16 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             if (s.equals("0") || s.length() == 0) {
                 Toast.makeText(Register.this, "注册失败！！！", Toast.LENGTH_SHORT).show();
             } else {
-                Intent main = new Intent(Register.this, LoginActivity.class);
-                main.putExtra("stunum", account.getText().toString());
-                main.putExtra("account", username.getText().toString());
-                main.putExtra("pwd", pwd.getText().toString());
-
-                startActivityForResult(main, 2);
                 Toast.makeText(Register.this, "注册成功！", Toast.LENGTH_SHORT).show();
                 Log.i(TAG, "注册成功");
                 Log.i(TAG, "run: info=" + s);
+                //返回login页面
+                Intent main = getIntent();
+                main.putExtra("account", accountText);
+                main.putExtra("username", userNameText);
+                main.putExtra("pwd", pwdText);
+                setResult(2, main);
+                finish();
             }
             dialog.dismiss();
         }

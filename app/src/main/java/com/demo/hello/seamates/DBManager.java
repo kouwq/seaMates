@@ -4,9 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class DBManager {
     private DBHelper dbHelper;
@@ -120,6 +123,7 @@ public class DBManager {
         values.put("qq", item.getQq());
         values.put("detail", item.getDetail());
         db.insert(TBTEAM, null, values);
+        Log.i(TAG, "addTeam: "+item.getTeamName());
         db.close();
     }
 

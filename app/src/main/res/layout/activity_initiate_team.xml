@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey"
+    android:background="@color/primary_light"
     android:orientation="vertical"
     tools:context=".InitiateTeamActivity">
 
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="5dp"
-            android:background="@color/icons"
+            android:background="@null"
             android:orientation="vertical">
 
             <TextView
@@ -48,10 +48,7 @@
                     android:text="比赛类型" />
 
                 <View
-                    android:layout_width="2dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:background="@color/black" />
+                    style="@style/viewStyle"/>
 
                 <EditText
                     android:id="@+id/teamAdd_cpName"
@@ -67,16 +64,13 @@
                     android:text="队伍名称" />
 
                 <View
-                    android:layout_width="2dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:background="@color/black" />
+                    style="@style/viewStyle"/>
 
                 <EditText
                     android:id="@+id/teamAdd_teamName"
                     style="@style/Register_RightEditText"
                     android:hint="@null"
-                    android:inputType="textPostalAddress" />
+                    android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout style="@style/FormMainLayoutStyle">
@@ -86,16 +80,13 @@
                     android:text="队伍人数" />
 
                 <View
-                    android:layout_width="2dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:background="@color/black" />
+                    style="@style/viewStyle"/>
 
                 <EditText
                     android:id="@+id/teamAdd_matesNum"
                     style="@style/Register_RightEditText"
                     android:hint="@null"
-                    android:inputType="textPassword" />
+                    android:inputType="number" />
             </LinearLayout>
 
             <LinearLayout style="@style/FormMainLayoutStyle">
@@ -105,16 +96,13 @@
                     android:text="QQ" />
 
                 <View
-                    android:layout_width="2dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:background="@color/black" />
+                    style="@style/viewStyle"/>
 
                 <EditText
                     android:id="@+id/teamAdd_qq"
                     style="@style/Register_RightEditText"
                     android:hint="@null"
-                    android:inputType="textPassword" />
+                    android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout style="@style/FormMainLayoutStyle">
@@ -122,13 +110,21 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/white"
+                    android:background="@null"
                     android:gravity="center"
                     android:padding="15dp"
                     android:text="队员要求" />
 
             </LinearLayout>
 
+            <LinearLayout style="@style/FormMainLayoutStyle">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/primary_dark" />
+
+            </LinearLayout>
             <LinearLayout
                 style="@style/FormMainLayoutStyle"
                 android:layout_height="80dp">

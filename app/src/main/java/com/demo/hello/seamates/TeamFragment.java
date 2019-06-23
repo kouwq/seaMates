@@ -2,7 +2,9 @@ package com.demo.hello.seamates;
 
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -38,7 +40,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TeamFragment extends Fragment implements AdapterView.OnItemClickListener, Runnable,OnClickListener {
+public class TeamFragment extends Fragment implements AdapterView.OnItemClickListener, Runnable, OnClickListener, AdapterView.OnItemLongClickListener {
     private static final String TAG = "TeamFragment";
     private final String DATE_SP_KEY = "lastTeamDate";
     private String data[] = {"wait..."};
@@ -73,6 +75,7 @@ public class TeamFragment extends Fragment implements AdapterView.OnItemClickLis
 
         list.setEmptyView(view.findViewById(R.id.team_tv_nodata));
         list.setOnItemClickListener(this);
+        list.setOnItemLongClickListener(this);
 
         //悬浮按钮添加监听
         fab = view.findViewById(R.id.team_fab);
@@ -100,6 +103,29 @@ public class TeamFragment extends Fragment implements AdapterView.OnItemClickLis
 
         return view;
 //        return inflater.inflate(R.layout.fragment_team, container, false);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 4 && resultCode == 5) {
+            List<HashMap<String, String>> retList = new ArrayList<>();
+            DBManager manager = new DBManager(getActivity());
+            for (TeamItem teamItem : manager.listAllTeam()) {
+                HashMap<String, String> stringHashMap = new HashMap<>();
+                stringHashMap.put("team_name", teamItem.getTeamName());
+                stringHashMap.put("team_id", String.valueOf(teamItem.getTeamId()));
+                stringHashMap.put("leader", getString(R.string.leadText) + teamItem.getLeader());
+                stringHashMap.put("qq", getString(R.string.qqText) + teamItem.getQq());
+                retList.add(stringHashMap);
+            }
+            listItemAdapter = new SimpleAdapter(getActivity(), retList,
+                    R.layout.team_list,
+                    new String[]{"team_name", "leader", "team_id", "qq"},
+                    new int[]{R.id.teamList_title, R.id.teamList_leader, R.id.teamList_id, R.id.teamList_qq}
+            );
+            list.setAdapter(listItemAdapter);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -176,8 +202,8 @@ public class TeamFragment extends Fragment implements AdapterView.OnItemClickLis
 
                             retList.add(map);
 
-                            TeamItem TeamItem = new TeamItem(cp_name, team_name, leader, Integer.parseInt(mates_num), qq, detail);
-                            teamList.add(TeamItem);
+                            TeamItem teamItem = new TeamItem(cp_name, team_name, leader, Integer.parseInt(mates_num), qq, detail);
+                            teamList.add(teamItem);
                             Log.i(TAG, "run: 成功获取数据");
                         }
 
@@ -210,8 +236,30 @@ public class TeamFragment extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public void onClick(View v) {
-        Intent addTeam = new Intent(getActivity(),InitiateTeamActivity.class);
-        addTeam.putExtra("account",getActivity().getIntent().getStringExtra("account"));
-        startActivityForResult(addTeam,4);
+        Intent addTeam = new Intent(getActivity(), InitiateTeamActivity.class);
+        startActivityForResult(addTeam, 4);
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+        HashMap<String, String> map = (HashMap<String, String>) parent.getItemAtPosition(position);
+        final int team_id = Integer.parseInt(map.get("team_id"));
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("提示").setMessage("请确定是否删除当前数据").setPositiveButton("是", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.i(TAG, "onClick:对话框事件处理");
+                listItems.remove(position);
+                listItemAdapter.notifyDataSetChanged();
+                DBManager manager = new DBManager(getActivity());
+                manager.deleteTeam(team_id);
+
+            }
+        })
+                .setNegativeButton("否", null);
+        builder.create().show();
+        Log.i(TAG, "onItemLongClick:size=" + listItems.size());
+        return true;
     }
 }

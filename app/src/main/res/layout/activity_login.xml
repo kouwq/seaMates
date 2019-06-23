@@ -80,7 +80,6 @@
                 android:layout_gravity="center"
                 android:background="@color/black" />
 
-
             <EditText
                 android:id="@+id/et_pwd_u"
                 android:layout_width="wrap_content"

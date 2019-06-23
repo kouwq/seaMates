@@ -46,6 +46,8 @@
                     style="@style/Register_LeftTextView"
                     android:text="@string/account" />
 
+                <View style="@style/viewStyle" />
+
                 <EditText
                     android:id="@+id/reg_et_account"
                     style="@style/Register_RightEditText"
@@ -59,6 +61,8 @@
                     style="@style/Register_LeftTextView"
                     android:text="@string/username" />
 
+                <View style="@style/viewStyle" />
+
                 <EditText
                     android:id="@+id/reg_et_name"
                     style="@style/Register_RightEditText"
@@ -71,6 +75,8 @@
                 <TextView
                     style="@style/Register_LeftTextView"
                     android:text="@string/sex" />
+
+                <View style="@style/viewStyle" />
 
                 <RadioGroup
                     android:id="@+id/reg_rg_sex"
@@ -102,6 +108,8 @@
                     style="@style/Register_LeftTextView"
                     android:text="@string/pwd" />
 
+                <View style="@style/viewStyle" />
+
                 <EditText
                     android:id="@+id/reg_et_pwd"
                     style="@style/Register_RightEditText"
@@ -115,6 +123,8 @@
                 <TextView
                     style="@style/Register_LeftTextView"
                     android:text="@string/phone" />
+
+                <View style="@style/viewStyle" />
 
                 <EditText
                     android:id="@+id/reg_et_phone"
@@ -130,6 +140,8 @@
                     style="@style/Register_LeftTextView"
                     android:text="@string/grade" />
 
+                <View style="@style/viewStyle" />
+
                 <EditText
                     android:id="@+id/reg_et_grade"
                     style="@style/Register_RightEditText"
@@ -142,6 +154,8 @@
                 <TextView
                     style="@style/Register_LeftTextView"
                     android:text="@string/major" />
+
+                <View style="@style/viewStyle" />
 
                 <EditText
                     android:id="@+id/reg_et_major"
@@ -158,6 +172,15 @@
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="@string/idc" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormMainLayoutStyle">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/primary_dark" />
 
             </LinearLayout>
 

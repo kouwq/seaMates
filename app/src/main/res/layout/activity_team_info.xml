@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/primary_light"
+    android:orientation="vertical"
     android:padding="16dp"
     tools:context=".TeamInfoActivity">
 
@@ -13,9 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:textColor="@color/primary"
         android:gravity="center"
         android:text="teamName"
+        android:textColor="@color/primary"
         android:textSize="30sp" />
 
     <LinearLayout
@@ -44,26 +44,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:textColor="@color/black"
         android:text="detail"
+        android:textColor="@color/black"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/teamInfo_qq"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
         android:layout_marginTop="10dp"
-        android:textColor="@color/primary_text"
-        android:text="qq" />
+        android:gravity="end"
+        android:text="qq"
+        android:textColor="@color/primary_text" />
 
     <TextView
         android:id="@+id/teamInfo_matesNum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textColor="@color/primary_dark"
         android:gravity="end"
-        android:text="matesNum" />
+        android:text="matesNum"
+        android:textColor="@color/primary_dark" />
 
 </LinearLayout>
