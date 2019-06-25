@@ -1,9 +1,12 @@
 package com.demo.hello.seamates;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -19,6 +22,7 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
     private MyPageAdapter pageAdapter;
     private RadioGroup radioGroup;
     private RadioButton rbtHome, rbtFunc, rbtSetting;
+    private String TAG ="MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,17 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
         viewPager.setCurrentItem(0);
         //ViewPager页面切换监听
         viewPager.addOnPageChangeListener(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == TeamFragment.requestCode) {
+            if (resultCode == TeamInfoActivity.resultCode || resultCode == InitiateTeamActivity.resultCode) {
+                viewPager.setCurrentItem(1);
+                Log.i(TAG, "onActivityResult: ");
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

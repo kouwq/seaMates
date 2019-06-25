@@ -49,7 +49,7 @@ public class TeamFragment extends Fragment implements AdapterView.OnItemClickLis
     private Handler handler;
     private List<HashMap<String, String>> listItems;//存放文字、图片信息
     private SimpleAdapter listItemAdapter;//适配器
-    private FloatingActionButton fab;
+    public static int requestCode = 6;
 
     public TeamFragment() {
         // Required empty public constructor
@@ -78,7 +78,7 @@ public class TeamFragment extends Fragment implements AdapterView.OnItemClickLis
         list.setOnItemLongClickListener(this);
 
         //悬浮按钮添加监听
-        fab = view.findViewById(R.id.team_fab);
+        FloatingActionButton fab = view.findViewById(R.id.team_fab);
         fab.setOnClickListener(this);
         //开启子线程
         Thread t = new Thread(this);
@@ -107,7 +107,7 @@ public class TeamFragment extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 4 && resultCode == 5) {
+        if (requestCode == this.requestCode && resultCode == InitiateTeamActivity.resultCode) {
             List<HashMap<String, String>> retList = new ArrayList<>();
             DBManager manager = new DBManager(getActivity());
             for (TeamItem teamItem : manager.listAllTeam()) {
@@ -135,7 +135,7 @@ public class TeamFragment extends Fragment implements AdapterView.OnItemClickLis
         //打开新页面
         Intent teamInfo = new Intent(getActivity(), TeamInfoActivity.class);
         teamInfo.putExtra("team_id", team_id);
-        startActivity(teamInfo);
+        startActivityForResult(teamInfo, requestCode);
 
     }
 
@@ -237,7 +237,7 @@ public class TeamFragment extends Fragment implements AdapterView.OnItemClickLis
     @Override
     public void onClick(View v) {
         Intent addTeam = new Intent(getActivity(), InitiateTeamActivity.class);
-        startActivityForResult(addTeam, 4);
+        startActivityForResult(addTeam, requestCode);
     }
 
     @Override

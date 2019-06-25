@@ -3,11 +3,14 @@ package com.demo.hello.seamates;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class CompetitionInfoActivity extends AppCompatActivity {
     TextView title, category, stime, etime, info;
     String titleText, categorytText, stimeText, etimeText, infoText;
+    private String TAG="CompetitionInfoActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,5 +45,18 @@ public class CompetitionInfoActivity extends AppCompatActivity {
         stime.setText(stimeText);
         etime.setText(etimeText);
         info.setText(infoText);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Log.i(TAG, "onOptionsItemSelected: 返回键");
+                finish();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -23,16 +23,10 @@
 
         </activity>
         <activity android:name=".Register" />
-        <activity android:name=".MainActivity"></activity>
-        <activity
-            android:name=".CompetitionInfoActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".TeamInfoActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".InitiateTeamActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".CompetitionInfoActivity" />
+        <activity android:name=".TeamInfoActivity" />
+        <activity android:name=".InitiateTeamActivity" />
     </application>
 
 </manifest>

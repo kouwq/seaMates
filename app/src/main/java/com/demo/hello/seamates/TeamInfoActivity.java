@@ -4,9 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class TeamInfoActivity extends AppCompatActivity {
+    public static int resultCode = 7;
+    private String TAG="TeamInfoActivity";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -46,6 +50,19 @@ public class TeamInfoActivity extends AppCompatActivity {
         qq.setText(getString(R.string.qqText) + qqText);
         matesNum.setText(getString(R.string.matesNum) + String.valueOf(matesNumText));
 
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                setResult(resultCode);
+                Log.i(TAG, "onOptionsItemSelected: 返回键");
+                finish();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ public class InitiateTeamActivity extends AppCompatActivity implements View.OnCl
     EditText cpName, teamName, matesNum, qq, detail;
     Button btn;
     String cpNameText, teamNameText, usernameText, matesNumText, qqText, detailText;
+    public static int resultCode = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,9 @@ public class InitiateTeamActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_initiate_team);
         //返回按钮
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         //获取sp里面保存的数据
         SharedPreferences sharedPreferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
@@ -87,6 +91,20 @@ public class InitiateTeamActivity extends AppCompatActivity implements View.OnCl
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                setResult(resultCode);
+                Log.i(TAG, "onOptionsItemSelected: 返回键");
+                finish();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
@@ -123,7 +141,7 @@ public class InitiateTeamActivity extends AppCompatActivity implements View.OnCl
                 DBManager manager = new DBManager(InitiateTeamActivity.this);
                 manager.addTeam(teamItem);
                 Intent intent = getIntent();
-                setResult(5, intent);
+                setResult(resultCode, intent);
                 finish();
             }
         }
